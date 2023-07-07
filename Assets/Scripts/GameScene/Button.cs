@@ -32,6 +32,7 @@ public class Button : MonoBehaviour
                 if (hitInfo.collider.gameObject == this.gameObject)
                 {
                     _isSel = true;
+                    ButtonDown();
                 }
             }
         }
@@ -40,6 +41,7 @@ public class Button : MonoBehaviour
         {
             _isSel = false;
             this.transform.position = startPos;
+            ButtonUp();
         }
 
         if (_isSel)
@@ -47,4 +49,10 @@ public class Button : MonoBehaviour
             this.transform.position=selPos;
         }
     }
+    
+    protected virtual void ButtonDown()
+    {}
+    
+    protected virtual void ButtonUp()
+    {}
 }

@@ -79,7 +79,7 @@ public class JoyStick : MonoBehaviour
             nowStickDir= Dir.None;
             offset= Vector2.zero;
             this.transform.rotation=Quaternion.Euler(stickStartRot);
-            EventCenter.GetInstance().EventTrigger("StopMove");
+            StickStop();
         }
 
         //点击不动
@@ -87,7 +87,6 @@ public class JoyStick : MonoBehaviour
         {
             GetVecDir();
             JoyStickRotate();
-           
         }
     }
 
@@ -107,7 +106,7 @@ public class JoyStick : MonoBehaviour
         }
     }
     
-    //旋转摇杆
+    //旋转摇杆并触发事件
     private void JoyStickRotate()
     {
         if(nowStickDir!=Dir.None)
@@ -117,24 +116,38 @@ public class JoyStick : MonoBehaviour
             case Dir.Forward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.right);
                 nowStickDir= Dir.Forward;
-                EventCenter.GetInstance().EventTrigger("MoveForward");
+                StickForward();
                 break;
             case Dir.Backward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.right);
                 nowStickDir= Dir.Backward;
-                EventCenter.GetInstance().EventTrigger("MoveBackward");
+                StickBackward();
                 break;
             case Dir.Left:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.forward);
                 nowStickDir= Dir.Left;
-                EventCenter.GetInstance().EventTrigger("MoveLeft");
+                StickLeft();
                 break;
             case Dir.Right:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.forward);
                 nowStickDir= Dir.Right;
-                EventCenter.GetInstance().EventTrigger("MoveRight");
+                StickRight();
                 break;
         }
     }
+
+    protected virtual void StickForward()
+    { }
     
+    protected virtual void StickBackward()
+    { }
+    
+    protected virtual void StickLeft()
+    { }
+    
+    protected virtual void StickRight()
+    { }
+    
+    protected virtual void StickStop()
+    { }
 }
