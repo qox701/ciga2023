@@ -76,8 +76,10 @@ public class JoyStick : MonoBehaviour
         {
             _isSel = false;
             nowMouseDir = Dir.None;
+            nowStickDir= Dir.None;
             offset= Vector2.zero;
             this.transform.rotation=Quaternion.Euler(stickStartRot);
+            EventCenter.GetInstance().EventTrigger("StopMove");
         }
 
         //点击不动
@@ -85,11 +87,11 @@ public class JoyStick : MonoBehaviour
         {
             GetVecDir();
             JoyStickRotate();
-            //Debug.Log(nowMouseDir);
+           
         }
     }
 
-    
+    //判断鼠标方向
     private void GetVecDir()
     {
         if(nowMouseDir!=Dir.None)
@@ -105,21 +107,32 @@ public class JoyStick : MonoBehaviour
         }
     }
     
+    //旋转摇杆
     private void JoyStickRotate()
     {
+        if(nowStickDir!=Dir.None)
+            return;
         switch (nowMouseDir)
         {
             case Dir.Forward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.right);
+                nowStickDir= Dir.Forward;
+                EventCenter.GetInstance().EventTrigger("MoveForward");
                 break;
             case Dir.Backward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.right);
+                nowStickDir= Dir.Backward;
+                EventCenter.GetInstance().EventTrigger("MoveBackward");
                 break;
             case Dir.Left:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.forward);
+                nowStickDir= Dir.Left;
+                EventCenter.GetInstance().EventTrigger("MoveLeft");
                 break;
             case Dir.Right:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.forward);
+                nowStickDir= Dir.Right;
+                EventCenter.GetInstance().EventTrigger("MoveRight");
                 break;
         }
     }
