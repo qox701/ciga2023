@@ -79,6 +79,7 @@ public class JoyStick : MonoBehaviour
             nowStickDir= Dir.None;
             offset= Vector2.zero;
             this.transform.rotation=Quaternion.Euler(stickStartRot);
+            EventCenter.GetInstance().EventTrigger("StopMove");
         }
 
         //点击不动
@@ -116,18 +117,22 @@ public class JoyStick : MonoBehaviour
             case Dir.Forward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.right);
                 nowStickDir= Dir.Forward;
+                EventCenter.GetInstance().EventTrigger("MoveForward");
                 break;
             case Dir.Backward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.right);
                 nowStickDir= Dir.Backward;
+                EventCenter.GetInstance().EventTrigger("MoveBackward");
                 break;
             case Dir.Left:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.forward);
                 nowStickDir= Dir.Left;
+                EventCenter.GetInstance().EventTrigger("MoveLeft");
                 break;
             case Dir.Right:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.forward);
                 nowStickDir= Dir.Right;
+                EventCenter.GetInstance().EventTrigger("MoveRight");
                 break;
         }
     }
