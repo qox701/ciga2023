@@ -76,6 +76,7 @@ public class JoyStick : MonoBehaviour
         {
             _isSel = false;
             nowMouseDir = Dir.None;
+            nowStickDir= Dir.None;
             offset= Vector2.zero;
             this.transform.rotation=Quaternion.Euler(stickStartRot);
         }
@@ -85,11 +86,11 @@ public class JoyStick : MonoBehaviour
         {
             GetVecDir();
             JoyStickRotate();
-            //Debug.Log(nowMouseDir);
+           
         }
     }
 
-    
+    //判断鼠标方向
     private void GetVecDir()
     {
         if(nowMouseDir!=Dir.None)
@@ -105,21 +106,28 @@ public class JoyStick : MonoBehaviour
         }
     }
     
+    //旋转摇杆
     private void JoyStickRotate()
     {
+        if(nowStickDir!=Dir.None)
+            return;
         switch (nowMouseDir)
         {
             case Dir.Forward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.right);
+                nowStickDir= Dir.Forward;
                 break;
             case Dir.Backward:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.right);
+                nowStickDir= Dir.Backward;
                 break;
             case Dir.Left:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(RotValue,Vector3.forward);
+                nowStickDir= Dir.Left;
                 break;
             case Dir.Right:
                 this.transform.rotation=Quaternion.Euler(stickStartRot)*Quaternion.AngleAxis(-RotValue,Vector3.forward);
+                nowStickDir= Dir.Right;
                 break;
         }
     }
