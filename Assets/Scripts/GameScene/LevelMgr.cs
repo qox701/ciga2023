@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class LevelMgr : MonoBehaviour
 {
+    private static LevelMgr instance;
+
+    public static LevelMgr Instance => instance;
+
+    public void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         UIManager.Instance.ShowPanel<RightPanel>();
