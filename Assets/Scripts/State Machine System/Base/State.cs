@@ -16,7 +16,7 @@ public interface IState
     /// <summary>
     /// Called each rendering frame(in update)
     /// </summary>
-    void FrameUpdate();
+    void FrameUpdate(float dt);
     /// <summary>
     /// Called in FixedUpdate
     /// </summary>
