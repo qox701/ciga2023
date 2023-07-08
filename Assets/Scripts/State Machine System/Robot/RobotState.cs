@@ -34,11 +34,12 @@ public class RobotState : ScriptableObject,IState
     /// <summary>
     /// Set all needed components as parameters
     /// </summary>
-    public void Initialize(RobotStateMachine stateMachine,RobotController controller)
+    public void Initialize(RobotStateMachine stateMachine,RobotController controller,Animator animator)
     {
         //Here I dont have an animator
         ThisStateMachine = stateMachine;
         ThisController = controller;
+        ThisAnimator = animator;
     }
     
     private void OnEnable()
@@ -49,7 +50,7 @@ public class RobotState : ScriptableObject,IState
     public virtual void Enter()
     {
         //No Animator
-        //ThisAnimator.CrossFade(_stateHash,transitionDuration);
+        ThisAnimator.CrossFade(_stateHash,transitionDuration);
         _stateStartTime = Time.time;
     }
 

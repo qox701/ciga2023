@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86d501c5ad72b84b99f387c77488298, type: 3}
   m_Name: RobotState_Idle
   m_EditorClassIdentifier: 
-  stateName: 
+  stateName: Idle
   transitionDuration: 0.1
   stateSFX: {fileID: 0}
   deceleration: 5

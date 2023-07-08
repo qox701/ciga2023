@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50578253332fbb14a9391f9963726113, type: 3}
   m_Name: RobotState_Walk
   m_EditorClassIdentifier: 
-  stateName: 
+  stateName: walk
   transitionDuration: 0.1
   stateSFX: {fileID: 0}
-  walkSpeed: 5
-  acceleration: 2

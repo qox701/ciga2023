@@ -13,7 +13,9 @@ public class InputListener : MonoSingleton<InputListener>
         EventCenter.GetInstance().AddEventListener("MoveRight",MoveRight);
         EventCenter.GetInstance().AddEventListener("StopMove",StopMove);
         EventCenter.GetInstance().AddEventListener("Jump",JumpAction);
+        EventCenter.GetInstance().AddEventListener("Grab",GrabAction);
         canJump = true;
+        canGrab = true;
     }
 
     //For now, without a virtual joystick, I test state machine with keyboard input
@@ -22,9 +24,10 @@ public class InputListener : MonoSingleton<InputListener>
     public float TurnAxis { get; private set; }
     public bool IsTurn => TurnAxis != 0;
     public bool Jump { get; private set; }
-
     private bool canJump;
     
+    public bool Grab { get; private set; }
+   [HideInInspector]public bool canGrab;//need to be public, set false when item already grabbed
     private enum MoveDir
     {
         none,
@@ -112,4 +115,31 @@ public class InputListener : MonoSingleton<InputListener>
         yield return new WaitForSeconds(2f);
         canJump = true;
     }
+
+    private void GrabAction()
+    {
+        if (canGrab)
+        {
+            Grab = true;
+            StartCoroutine(GrabCoroutine());
+            StartCoroutine(GrabCoolDown());
+        }
+    }
+
+    IEnumerator GrabCoroutine()
+    {
+        yield return new WaitForSeconds(0.01f);
+        Grab = false;
+    }
+
+    IEnumerator GrabCoolDown()
+    {
+        canGrab = false;
+        yield return new WaitForSeconds(2f);
+        if (RobotGrabPoint.Instance.grabState == GrabState.None)
+        {
+            canGrab = true;
+        }
+    }
+    
 }

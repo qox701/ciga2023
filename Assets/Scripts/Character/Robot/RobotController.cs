@@ -8,11 +8,14 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class RobotController : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed = 5f;
-    [SerializeField] public float turnSpeed = 5f;
-    [SerializeField] public float jumpPower = 5f;
-    [SerializeField] public float jumpMoveSpeed = 5f;
-    [SerializeField] public float gravity = 9.8f;
+    //I don't know why the value should be as this large when moving on ground, but small when moving in air.
+    //Perhaps this is how character controller component works
+    // Strange, but keep in mind.
+    [SerializeField] public float moveSpeed = 5f;//ground move
+    [SerializeField] public float turnSpeed = 5f;//ground turn
+    [SerializeField] public float jumpPower = 5f;//jump force
+    [SerializeField] public float jumpMoveSpeed = 5f;//air move
+    [SerializeField] public float gravity = 9.8f;//simulating gravity, working when jumping
 
 
     private Collider _collider;
@@ -22,7 +25,8 @@ public class RobotController : MonoBehaviour
 
     public bool IsGrounded => _characterController.isGrounded;
     public AudioSource audioPlayer;
-    
+
+   
 
     private CharacterController _characterController;
 
@@ -113,5 +117,7 @@ public class RobotController : MonoBehaviour
         audioPlayer.loop = false;
         audioPlayer.volume = 1.0f;
     }
+
+    
     
 }

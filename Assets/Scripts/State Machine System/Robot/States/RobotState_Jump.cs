@@ -12,7 +12,7 @@ public class RobotState_Jump : RobotState
    public override void Enter()
    {
       base.Enter();
-      Debug.Log("Robot Enter Jump");
+      //Debug.Log("Robot Enter Jump");
       forward = ThisController.transform.forward;
       _jumpMove = forward;
       _jumpMove *= ThisController.jumpMoveSpeed;

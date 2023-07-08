@@ -12,7 +12,7 @@ public class RobotState_Idle : RobotState
    public override void Enter()
    {
       base.Enter();
-      Debug.Log("Robot enter idle");
+      //Debug.Log("Robot enter idle");
       //_currentSpeed = ThisController.CurrentVelocity.z;
    }
 
@@ -31,6 +31,11 @@ public class RobotState_Idle : RobotState
       if (InputSource.Jump)
       {
          ThisStateMachine.SwitchState(typeof(RobotState_Jump));
+      }
+
+      if (InputSource.Grab)
+      {
+         ThisStateMachine.SwitchState(typeof(RobotState_Grab));
       }
 
       //_currentSpeed = Mathf.MoveTowards(_currentSpeed, 0, deceleration * Time.deltaTime);

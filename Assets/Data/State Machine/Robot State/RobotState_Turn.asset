@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a18ccea5c39d841be72146207d86bf, type: 3}
   m_Name: RobotState_Turn
   m_EditorClassIdentifier: 
-  stateName: 
+  stateName: turn
   transitionDuration: 0.1
   stateSFX: {fileID: 0}
-  rotateSpeed: 10

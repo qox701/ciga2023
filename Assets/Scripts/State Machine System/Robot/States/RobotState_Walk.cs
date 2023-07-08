@@ -10,7 +10,7 @@ public class RobotState_Walk : RobotState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Robot Enter Walk");
+        //Debug.Log("Robot Enter Walk");
     }
 
     public override void FrameUpdate(float dt)

@@ -15,10 +15,11 @@ public class RobotStateMachine : StateMachine
     {
         StateTable = new Dictionary<Type, IState>(states.Length);
         _robotController = GetComponent<RobotController>();
+        _animator = GetComponent<Animator>();
 
         foreach (RobotState state in states)
         {
-            state.Initialize(this,_robotController);
+            state.Initialize(this,_robotController,_animator);
             StateTable.Add(state.GetType(),state);
         }
     }
