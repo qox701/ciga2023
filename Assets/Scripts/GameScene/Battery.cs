@@ -31,6 +31,8 @@ public class Battery : MonoBehaviour
     {
         ShowEletricity();
         eletricity-=Time.deltaTime*decreaseSpeed;
+        if(eletricity<=0)
+            EventCenter.GetInstance().EventTrigger("GameOver");
     }
     
     //增加十格电量
