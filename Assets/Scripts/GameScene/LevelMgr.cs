@@ -16,5 +16,42 @@ public class LevelMgr : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.ShowPanel<RightPanel>();
+        EventCenter.GetInstance().AddEventListener("GameOver", GameOver);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GrabItem grabItem= other.GetComponent<GrabItem>();
+        if (grabItem!=null)
+        {
+            if (grabItem.type==ItemType.Battery)
+            {
+                AddBattery();
+                grabItem.HandInItem();
+            }
+            else if (grabItem.type==ItemType.Mission)
+            {
+                GameWin();
+                grabItem.HandInItem();
+                Debug.Log("Win");
+            }
+        }
+    }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0;
+        //UIManager.Instance.ShowPanel<EndPanel>();
+    }
+
+    private void GameWin()
+    {
+        Time.timeScale = 0;
+        //UIManager.Instance.ShowPanel<WinPanel>();
+    }
+
+    private void AddBattery()
+    {
+        EventCenter.GetInstance().EventTrigger("AddEletricity", 1);
     }
 }
