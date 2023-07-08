@@ -23,6 +23,8 @@ public class Raycontro : MonoBehaviour
     private Vector3 direction;
     private Vector3 targetDirection;
 
+    public GameObject aimPoint;
+
     //定义结构体
     private enum MoveDir
     {
@@ -40,11 +42,9 @@ public class Raycontro : MonoBehaviour
     {
         //获取基地的摄像头
         baseCamera = GameObject.Find("baseCamera");
-        sphereObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphereObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        sphereObject.GetComponent<MeshRenderer>().material.color = Color.red;
-        sphereObject.GetComponent<Collider>().enabled = false;
-        
+        sphereObject = Instantiate(aimPoint, this.transform.position, Quaternion.identity);
+        sphereObject.transform.localScale = new Vector3(1f, 1f, 1f);
+
         //LineRenderer基础绘制
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
@@ -90,7 +90,7 @@ public class Raycontro : MonoBehaviour
             }
             //插值到起点向量到终点向量的变化
             float rotatespeed = Time.deltaTime * speed;
-            Debug.Log(rotatespeed);
+            //Debug.Log(rotatespeed);
             direction = Vector3.Slerp(direction, targetDirection, rotatespeed);
         }
         else
@@ -106,6 +106,7 @@ public class Raycontro : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistance))
         {
             sphereObject.transform.position = hit.point;
+            
             sphereObject.SetActive(true);
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, hit.point);

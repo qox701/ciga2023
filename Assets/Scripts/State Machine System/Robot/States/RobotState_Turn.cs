@@ -11,6 +11,7 @@ public class RobotState_Turn : RobotState
    {
       base.Enter();
       //Debug.Log("Robot enter Turn");
+      EventCenter.GetInstance().EventTrigger(stateName);
      
    }
 
@@ -29,5 +30,10 @@ public class RobotState_Turn : RobotState
    public override void PhysicsUpdate()
    {
      
+   }
+
+   public override void Exit()
+   {
+      EventCenter.GetInstance().EventTrigger("end"+stateName);
    }
 }

@@ -13,6 +13,7 @@ public class RobotState_Jump : RobotState
    {
       base.Enter();
       //Debug.Log("Robot Enter Jump");
+      EventCenter.GetInstance().EventTrigger(stateName);
       forward = ThisController.transform.forward;
       _jumpMove = forward;
       _jumpMove *= ThisController.jumpMoveSpeed;
@@ -36,5 +37,6 @@ public class RobotState_Jump : RobotState
    public override void Exit()
    {
       _timer = 0f;
+      EventCenter.GetInstance().EventTrigger("end"+stateName);
    }
 }

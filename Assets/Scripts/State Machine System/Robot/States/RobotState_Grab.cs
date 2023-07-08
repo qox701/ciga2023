@@ -9,6 +9,7 @@ public class RobotState_Grab : RobotState
    {
       base.Enter();
       //Debug.Log("Robot Enter Grab");
+      EventCenter.GetInstance().EventTrigger(stateName);
    }
 
    public override void FrameUpdate(float dt)
@@ -22,5 +23,6 @@ public class RobotState_Grab : RobotState
    public override void Exit()
    {
       //Debug.Log("Robot Exit Grab");
+      EventCenter.GetInstance().EventTrigger("end"+stateName);
    }
 }
