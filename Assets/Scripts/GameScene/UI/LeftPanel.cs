@@ -10,7 +10,15 @@ public class LeftPanel : BasePanel
     {
         btnLeft.onClick.AddListener(() =>
         {
+            Debug.Log(1);
             
+            Camera.main.GetComponent<CameraAnimator>().TurnRight(() =>
+            {
+                UIManager.Instance.ShowPanel<RightPanel>();
+            });
+
+            //隐藏开始界面
+            UIManager.Instance.HidePanel<LeftPanel>();
         });
     }
 }

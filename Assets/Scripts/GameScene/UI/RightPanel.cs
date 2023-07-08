@@ -10,7 +10,14 @@ public class RightPanel : BasePanel
     {
         btnRight.onClick.AddListener(() =>
         {
-            
+            //播放摄像机 左转动画 然后 再显示选角面板
+            Camera.main.GetComponent<CameraAnimator>().TurnLeft(() =>
+            {
+                UIManager.Instance.ShowPanel<LeftPanel>();
+            });
+
+            //隐藏开始界面
+            UIManager.Instance.HidePanel<RightPanel>();
         });
     }
 }

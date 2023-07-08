@@ -23,7 +23,7 @@ public class CameraAnimator : MonoBehaviour
     }
 
     //右转
-    public void TurnRgiht(UnityAction action)
+    public void TurnRight(UnityAction action)
     {
         animator.SetTrigger("Right");
         overAction = action;
