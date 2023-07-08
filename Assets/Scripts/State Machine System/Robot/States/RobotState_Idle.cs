@@ -13,21 +13,31 @@ public class RobotState_Idle : RobotState
    {
       base.Enter();
       Debug.Log("Robot enter idle");
-      _currentSpeed = ThisController.CurrentVelocity.z;
+      //_currentSpeed = ThisController.CurrentVelocity.z;
    }
 
-   public override void FrameUpdate()
+   public override void FrameUpdate(float dt)
    {
       if (InputSource.IsWalk)
       {
          ThisStateMachine.SwitchState(typeof(RobotState_Walk));
       }
 
-      _currentSpeed = Mathf.MoveTowards(_currentSpeed, 0, deceleration * Time.deltaTime);
+      if (InputSource.IsTurn)
+      {
+         ThisStateMachine.SwitchState(typeof(RobotState_Turn));
+      }
+
+      if (InputSource.Jump)
+      {
+         ThisStateMachine.SwitchState(typeof(RobotState_Jump));
+      }
+
+      //_currentSpeed = Mathf.MoveTowards(_currentSpeed, 0, deceleration * Time.deltaTime);
    }
 
    public override void PhysicsUpdate()
    {
-      ThisController.MoveForward(_currentSpeed);
+      //ThisController.MoveForward(_currentSpeed);
    }
 }

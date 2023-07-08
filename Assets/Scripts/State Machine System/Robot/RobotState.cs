@@ -58,7 +58,7 @@ public class RobotState : ScriptableObject,IState
         
     }
 
-    public virtual void FrameUpdate()
+    public virtual void FrameUpdate(float dt)
     {
         
     }

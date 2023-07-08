@@ -12,7 +12,7 @@ public class StateMachine : MonoBehaviour
 
     private void Update()
     {
-        _currentState.FrameUpdate();
+        _currentState.FrameUpdate(Time.deltaTime);
     }
 
     private void FixedUpdate()
