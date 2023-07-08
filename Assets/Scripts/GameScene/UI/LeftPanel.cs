@@ -10,8 +10,6 @@ public class LeftPanel : BasePanel
     {
         btnLeft.onClick.AddListener(() =>
         {
-            Debug.Log(1);
-            
             Camera.main.GetComponent<CameraAnimator>().TurnRight(() =>
             {
                 UIManager.Instance.ShowPanel<RightPanel>();
