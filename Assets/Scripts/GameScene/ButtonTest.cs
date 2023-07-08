@@ -6,7 +6,8 @@ public class ButtonTest : Button
 {
     protected override void ButtonDown()
     {
-        Debug.Log("Button down");
+        EventCenter.GetInstance().EventTrigger("Jump");
+        Debug.Log(1);
     }
 
     protected override void ButtonUp()

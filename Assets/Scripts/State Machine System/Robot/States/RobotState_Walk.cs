@@ -11,7 +11,6 @@ public class RobotState_Walk : RobotState
     {
         base.Enter();
         Debug.Log("Robot Enter Walk");
-        
     }
 
     public override void FrameUpdate(float dt)
