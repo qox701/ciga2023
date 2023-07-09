@@ -14,6 +14,7 @@ public class RobotState_Jump : RobotState
       base.Enter();
       //Debug.Log("Robot Enter Jump");
       EventCenter.GetInstance().EventTrigger(stateName);
+      MusicMgr.GetInstance().PlaySound("机器人跳跃",false);
       forward = ThisController.transform.forward;
       _jumpMove = forward;
       _jumpMove *= ThisController.jumpMoveSpeed;

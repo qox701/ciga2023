@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
         {
             destroyable.DestroyThis();
             Instantiate(BoomEff, transform.position, transform.rotation);
+            MusicMgr.GetInstance().PlaySound("ÅÚµ¯±¬Õ¨", false);
             Destroy(this.gameObject);
         }
         else

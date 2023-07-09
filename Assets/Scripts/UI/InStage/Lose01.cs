@@ -14,6 +14,7 @@ public class Lose01 : BasePanel
     {
         _giveUp = transform.Find("GiveUp").GetComponent<UnityEngine.UI.Button>();
         _restart = transform.Find("Restart").GetComponent<UnityEngine.UI.Button>();
+        MusicMgr.GetInstance().PlaySound("按钮2", false);
 
         if (ReferenceEquals(_restart, null) || ReferenceEquals(_giveUp, null))
         {

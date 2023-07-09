@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class StartInfo : BasePanel
 {
-    [SerializeField] private string stage1 = "SampleScene";
+    [SerializeField] private string stage1 = "GameSceneLevel1";
     [SerializeField] private TextMeshProUGUI[] texts;
 
     private UnityEngine.UI.Button _pageDown;

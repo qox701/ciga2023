@@ -10,6 +10,7 @@ public class RayButton : Button
         if (Raycontro.hitthing == "Destroyable")
         {
             EventCenter.GetInstance().EventTrigger("Fire");
+            MusicMgr.GetInstance().PlaySound("炮弹发射", false);
         }
     }
     

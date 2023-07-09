@@ -10,6 +10,7 @@ public class RobotState_Grab : RobotState
       base.Enter();
       //Debug.Log("Robot Enter Grab");
       EventCenter.GetInstance().EventTrigger(stateName);
+      MusicMgr.GetInstance().PlaySound("机器人抓取",false);
    }
 
    public override void FrameUpdate(float dt)
