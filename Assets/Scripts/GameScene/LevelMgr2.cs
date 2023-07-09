@@ -40,13 +40,13 @@ public class LevelMgr2 : MonoBehaviour
 
     private void GameOver()
     {
-        Time.timeScale = 0;
+        Battery.Instance.isFading = false;
         UIManager.Instance.ShowPanel<Lose02>();
     }
 
     private void GameWin()
     {
-        Time.timeScale = 0;
+        Battery.Instance.isFading = false;
         UIManager.Instance.ShowPanel<Victory02>();
     }
 

@@ -21,8 +21,9 @@ public class Battery : MonoBehaviour
     private int showNum;
     
     //电量相关
-    private float eletricity=100;
+    private float eletricity=60f;
     public float decreaseSpeed=1;
+    public bool isFading = true;
     private void Start()
     {
         EventCenter.GetInstance().AddEventListener<int>("AddEletricity", AddEletricity);
@@ -30,7 +31,8 @@ public class Battery : MonoBehaviour
     private void Update()
     {
         ShowEletricity();
-        eletricity-=Time.deltaTime*decreaseSpeed;
+        if(isFading)
+            eletricity-=Time.deltaTime*decreaseSpeed;
         if(eletricity<=0)
             EventCenter.GetInstance().EventTrigger("GameOver");
     }

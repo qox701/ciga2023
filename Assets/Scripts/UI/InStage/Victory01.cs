@@ -28,7 +28,9 @@ public class Victory01 : BasePanel
 
     public void NextStage()
     {
-        SceneManager.LoadScene(nextStage, LoadSceneMode.Single);
+        SceneManager.LoadScene(nextStage);
+        MonoMgr.GetInstance().RemoveUpdateListener(MusicMgr.GetInstance().Update);
+        //ScenesMgr.GetInstance().LoadScene(nextStage,null);
         UIManager.Instance.HidePanel<Victory01>();
     }
 }

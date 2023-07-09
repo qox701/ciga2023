@@ -80,7 +80,7 @@ public class StartInfo : BasePanel
     public void GameStart()
     {
         
-        SceneManager.LoadScene(stage1, LoadSceneMode.Single);
+        SceneManager.LoadScene(stage1);
         UIManager.Instance.HidePanel<StartInfo>();
     }
 }
