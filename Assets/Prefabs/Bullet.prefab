@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  BoomEff: {fileID: 4766470916242547208, guid: 74ba32aa0c68f164daf0d6b8c3357c1a, type: 3}
 --- !u!1001 &1390615371932520170
 PrefabInstance:
   m_ObjectHideFlags: 0

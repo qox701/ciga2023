@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;  // 子弹飞行速度
-
+    public GameObject BoomEff;
     private void Update()
     {
         // 让子弹朝前方飞行
@@ -19,7 +19,17 @@ public class Bullet : MonoBehaviour
         if (destroyable != null)
         {
             destroyable.DestroyThis();
+            Instantiate(BoomEff, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
+        else
+        {
+            Invoke("DestroyThis",3f);
+        }
+    }
+
+    private void DestroyThis()
+    {
+        Destroy(this.gameObject);
     }
 }

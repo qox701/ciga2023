@@ -69,6 +69,7 @@ public class StartInfo : BasePanel
             _pageIndex = 0;
             
         }
+        MusicMgr.GetInstance().PlaySound("世界观翻页",false,null);
         _currentPage = texts[_pageIndex];
         _currentPage.gameObject.SetActive(true);
     }

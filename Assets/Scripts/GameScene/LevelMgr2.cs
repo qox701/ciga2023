@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelMgr : MonoBehaviour
+public class LevelMgr2 : MonoBehaviour
 {
-    private static LevelMgr instance;
+    private static LevelMgr2 instance;
 
-    public static LevelMgr Instance => instance;
+    public static LevelMgr2 Instance => instance;
 
     public void Awake()
     {
@@ -41,13 +41,13 @@ public class LevelMgr : MonoBehaviour
     private void GameOver()
     {
         Time.timeScale = 0;
-        UIManager.Instance.ShowPanel<Lose01>();
+        UIManager.Instance.ShowPanel<Lose02>();
     }
 
     private void GameWin()
     {
         Time.timeScale = 0;
-        UIManager.Instance.ShowPanel<Victory01>();
+        UIManager.Instance.ShowPanel<Victory02>();
     }
 
     private void AddBattery()
