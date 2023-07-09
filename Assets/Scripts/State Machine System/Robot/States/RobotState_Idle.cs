@@ -14,6 +14,7 @@ public class RobotState_Idle : RobotState
       base.Enter();
       //Debug.Log("Robot enter idle");
       //_currentSpeed = ThisController.CurrentVelocity.z;
+      EventCenter.GetInstance().EventTrigger(stateName);
    }
 
    public override void FrameUpdate(float dt)
@@ -44,5 +45,10 @@ public class RobotState_Idle : RobotState
    public override void PhysicsUpdate()
    {
       //ThisController.MoveForward(_currentSpeed);
+   }
+
+   public override void Exit()
+   {
+      EventCenter.GetInstance().EventTrigger("end"+stateName);
    }
 }

@@ -6,18 +6,13 @@ public class RayButton : Button
 {
     protected override void ButtonDown()
     {
-        //判断是否是可摧毁目标，tag名字可变
-        if (Raycontro.hitthing == "Player")
+        //鍒ゆ柇鏄惁鏄彲鎽ф瘉鐩爣锛宼ag鍚嶅瓧鍙彉
+        if (Raycontro.hitthing == "Destroyable")
         {
             EventCenter.GetInstance().EventTrigger("Fire");
-            Debug.Log("生成了子弹预制体");
+            MusicMgr.GetInstance().PlaySound("鐐脊鍙戝皠", false);
         }
-        Debug.Log("Button down");
     }
-
-    protected override void ButtonUp()
-    {
-        Debug.Log("Button up");
-    }
+    
 }
 

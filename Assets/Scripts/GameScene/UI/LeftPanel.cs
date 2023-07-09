@@ -13,6 +13,7 @@ public class LeftPanel : BasePanel
             Camera.main.GetComponent<CameraAnimator>().TurnRight(() =>
             {
                 UIManager.Instance.ShowPanel<RightPanel>();
+                MusicMgr.GetInstance().PlaySound("世界观翻页", false);
             });
 
             //隐藏开始界面

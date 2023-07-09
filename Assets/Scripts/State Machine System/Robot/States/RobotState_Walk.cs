@@ -11,6 +11,8 @@ public class RobotState_Walk : RobotState
     {
         base.Enter();
         //Debug.Log("Robot Enter Walk");
+        EventCenter.GetInstance().EventTrigger(stateName);
+        
     }
 
     public override void FrameUpdate(float dt)
@@ -28,5 +30,10 @@ public class RobotState_Walk : RobotState
     public override void PhysicsUpdate()
     {
         
+    }
+
+    public override void Exit()
+    {
+        EventCenter.GetInstance().EventTrigger("end"+stateName);
     }
 }

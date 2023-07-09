@@ -21,8 +21,8 @@ public class MusicMgr : BaseManager<MusicMgr>
     {
         MonoMgr.GetInstance().AddUpdateListener(Update);
     }
-
-    private void Update()
+    
+    public void Update()
     {
         for( int i = soundList.Count - 1; i >=0; --i )
         {

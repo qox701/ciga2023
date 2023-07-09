@@ -40,18 +40,18 @@ public class LevelMgr : MonoBehaviour
 
     private void GameOver()
     {
-        Time.timeScale = 0;
-        //UIManager.Instance.ShowPanel<EndPanel>();
+        Battery.Instance.isFading = false;
+        UIManager.Instance.ShowPanel<Lose01>();
     }
 
     private void GameWin()
     {
-        Time.timeScale = 0;
-        //UIManager.Instance.ShowPanel<WinPanel>();
+        Battery.Instance.isFading = false;
+        UIManager.Instance.ShowPanel<Victory01>();
     }
 
     private void AddBattery()
     {
-        EventCenter.GetInstance().EventTrigger("AddEletricity", 1);
+        EventCenter.GetInstance().EventTrigger("AddEletricity", 2);
     }
 }
