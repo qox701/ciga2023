@@ -10,14 +10,8 @@ public class RayButton : Button
         if (Raycontro.hitthing == "Destroyable")
         {
             EventCenter.GetInstance().EventTrigger("Fire");
-            Debug.Log("生成了子弹预制体");
         }
-        Debug.Log("Button down");
     }
-
-    protected override void ButtonUp()
-    {
-        Debug.Log("Button up");
-    }
+    
 }
 

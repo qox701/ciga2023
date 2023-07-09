@@ -90,7 +90,7 @@ public class Raycontro : MonoBehaviour
             }
             //插值到起点向量到终点向量的变化
             float rotatespeed = Time.deltaTime * speed;
-            //Debug.Log(rotatespeed);
+            
             direction = Vector3.Slerp(direction, targetDirection, rotatespeed);
         }
         else
@@ -149,10 +149,9 @@ public class Raycontro : MonoBehaviour
     }
     private void Fire()
     {
-        Debug.Log("Fire");
         // 生成子弹预制体
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
         // 设置子弹方向
-        bullet.transform.forward = direction.normalized;
+        bullet.transform.forward = sphereObject.transform.position-this.transform.position;
     }
 }
